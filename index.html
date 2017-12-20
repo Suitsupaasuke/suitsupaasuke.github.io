@@ -12,24 +12,15 @@
     <link href="./style2017.css" rel="stylesheet" type="text/css">
     <link rel='shortcut icon' type='image/x-icon' href='images/favicon.ico' />
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
     <script>
-        $(window).load(function() {
-    // Animate loader off screen
-    $(".se-pre-con").fadeOut("slow");;
-  });
-    </script>
-<!--     <script>
 window.addEventListener("load", function(){
   var load_screen = document.getElementById("load_screen");
   document.body.removeChild(load_screen);
 });
-</script> -->
+</script>
 </head>
 <body>
-  <div class="se-pre-con">
-  </div>
+  <div class="se-pre-con"></div>
   <div id="myBtn" class="btnplay" onclick="myFunction()">MÄNGI</div> 
   
   <div id="music" onclick="toggleMusic()">
@@ -43,6 +34,9 @@ window.addEventListener("load", function(){
       <source src="audio/music.mp3" type="audio/mpeg">
     </audio>
   
+  </div>
+  <div id="load_screen">
+    <div id="loading">LAEN SISU</div>
   </div>
 
   <div class="frame">
