@@ -82,6 +82,7 @@ window.addEventListener("load", function(){
     var player = $('.player_audio')[0];
     var image = $('#play-img')[0];
 
+    audio.load();
     player.paused
 
     if (player.paused == true) {
@@ -112,6 +113,8 @@ var bodyWidth = $('body').width();
 
 var player = $('.player_audio')[0];
 var image = $('#play-img')[0];
+
+video.load();
 
 // Pause and play the video, and change the button text
 function myFunction() {
