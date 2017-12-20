@@ -81,29 +81,10 @@ window.addEventListener("load", function(){
 
 </div>
 
-<!-- toggle music button -->
-<script type="text/javascript">
-  function toggleMusic() {
-    var player = $('.player_audio')[0];
-    var image = $('#play-img')[0];
 
-    audio.load();
-    player.paused
-
-    if (player.paused == true) {
-        player.play();
-        image.src = 'images/mute_on.svg';
-    } else {
-        player.pause();
-        image.src = 'images/mute_off.svg';
-    }
-  };
-</script>
 <script>
 $(function() {
   $("h2").delay(4000).fadeIn(4000);
-  // $("#myBtn").delay(8000).fadeIn(2000);
-
 });
 </script>
 <script>
