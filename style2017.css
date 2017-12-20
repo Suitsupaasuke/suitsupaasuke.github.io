@@ -124,7 +124,7 @@ div#load_screen > div#loading{
   right: 0;
 }
 #music {
-  z-index: 7;
+  z-index: 10;
   width: 52px;
   height: 52px;
   position: absolute;
@@ -254,7 +254,7 @@ div#load_screen > div#loading{
 }
 
 #music {
-  z-index: 7;
+  z-index: 10;
   width: 35px;
   position: absolute;
   margin-right: 30px;
