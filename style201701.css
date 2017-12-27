@@ -1,0 +1,341 @@
+@charset "utf-8";
+
+@font-face {
+  font-family: 'Nunito-Light';
+  src: url('fonts/Nunito-Light.eot'); /* IE9 Compat Modes */
+  src: url('fonts/Nunito-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/Nunito-Light.woff2') format('woff2'), /* Super Modern Browsers */
+       url('fonts/Nunito-Light.woff') format('woff'), /* Pretty Modern Browsers */
+       url('fonts/Nunito-Light.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('fonts/Nunito-Light.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'Nunito-Regular';
+  src: url('fonts/Nunito-Regular.eot'); /* IE9 Compat Modes */
+  src: url('fonts/Nunito-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/Nunito-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('fonts/Nunito-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+       url('fonts/Nunito-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('fonts/Nunito-Regular.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+html,body{
+  width:0px;
+  height: 0px;
+  margin: 0 ;
+  padding: 0 ;
+  background-color: #e1f3f9;
+}
+
+.snow {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  position: absolute;
+}
+
+canvas {
+  z-index: -9;
+}
+
+#video-bg {
+  z-index: -10;
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  overflow: hidden;
+}
+#video-bg > video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+/* 1. No object-fit support: */
+@media (min-aspect-ratio: 16/9) {
+  #video-bg > video { height: 300%; top: -100%; }
+}
+@media (max-aspect-ratio: 16/9) {
+  #video-bg > video { width: 300%; left: -100%; }
+}
+/* 2. If supporting object-fit, overriding (1): */
+@supports (object-fit: cover) {
+  #video-bg > video {
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+}
+
+
+@media only screen and (min-width: 767px){
+h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: Nunito-Regular;  
+  font-size: 45px;
+  letter-spacing: 8px;
+  line-height: 1.4;
+  text-align: center;
+  color: white;
+}
+
+h2 {
+  margin-top: 0;
+  font-family: Nunito-Light;  
+  font-size: 14px;
+  letter-spacing: 8px;
+  line-height: 1.4;
+  text-align: center;
+  color: white;
+}
+
+div#load_screen{
+  background: #e1f3f9;
+  opacity: 1;
+  position: fixed;
+    z-index:10;
+  top: 0px;
+  width: 100%;
+  height: 1600px;
+}
+
+div#load_screen > div#loading{
+  color:#FFF;
+  font-family: Nunito-Light;  
+  font-size: 26px;
+  letter-spacing: 8px;
+  line-height: 1.2;
+  text-align: center;
+  color: white;
+  width:120px;
+  height:24px;
+  margin: 300px auto;
+}
+.logo{
+  position: fixed;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 0;
+  width: 100px;
+  padding: 0;
+  bottom: -35px;
+  left: 0;
+  right: 0;
+}
+#music {
+  z-index: 10;
+  width: 52px;
+  height: 52px;
+  position: absolute;
+  margin-right: 50px;
+  margin-left: auto;
+  margin-bottom: 0;
+  padding: 0;
+  top: 50px;
+  left: 0;
+  right: 0;
+}
+
+.header {
+  position: fixed;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 0;
+  width: 600px;
+  height: 100px;
+  padding: 0;
+  top: 35px;
+  left: 0;
+  right: 0;
+}
+
+.frame {
+  z-index: 1;
+}
+
+#top, #bottom, #left, #right {
+  background: #e1f3f9;
+  position: fixed;
+  }
+  #left, #right {
+    top: 0; bottom: 0;
+    width: 20px;
+    }
+    #left { left: 0; }
+    #right { right: 0; }
+    
+  #top {
+    left: 0; right: 0;
+    height: 20px;
+    }
+
+    #bottom {
+    left: 0; right: 0;
+    height: 20px;
+    }
+    #top { top: 0; }
+    #bottom { bottom: 0; }
+
+.btnplay {
+  z-index: 10;
+  width: 50%;
+  height: 70px;
+  line-height: 70px;
+  font-size: 26px;
+  text-align: center;
+  background: none;
+  cursor: pointer;
+  border: 2px solid #fff;
+  color: #fff;
+  font-family: Nunito-Light;  
+  letter-spacing: 14px;
+  outline: none;
+  position: absolute;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 0;
+  padding: 0;
+  top: 150px;
+  left: 0;
+  right: 0;
+}
+.paus {
+  z-index: 10;
+  width: 10px;
+  height: 20px;
+  background-color: black;
+  position: absolute;
+  margin: auto;
+}
+}
+
+@media only screen and (max-width: 768px){
+h1 {
+  font-family: Nunito-Regular; 
+  width: 60%;
+  margin: auto;
+  margin-top: 10px;
+  font-size: 160%;
+  letter-spacing: 6px;
+  line-height: 1.4;
+  text-align: center;
+  color: white;
+}
+h2 {
+  font-family: Nunito-Light; 
+  font-size: 60%;
+  letter-spacing: 6px;
+  line-height: 1.4;
+  text-align: center;
+  color: white;
+
+}
+div#load_screen{
+  background: #e1f3f9;
+  opacity: 1;
+  position: fixed;
+    z-index:10;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+}
+div#load_screen > div#loading{
+  color:#FFF;
+  font-family: Nunito-Light;  
+  font-size: 16px;
+  letter-spacing: 8px;
+  line-height: 1.2;
+  text-align: center;
+  color: white;
+  width:400;
+  height:24px;
+  margin: 180px auto;
+}
+
+#music {
+  z-index: 10;
+  width: 35px;
+  position: absolute;
+  margin-right: 30px;
+  margin-left: auto;
+  margin-bottom: 0;
+  padding: 0;
+  top: 30px;
+  left: 0;
+  right: 0;
+}
+.logo{
+  position: fixed;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 0;
+  width: 100px;
+  padding: 0;
+  bottom: -35px;
+  left: 0;
+  right: 0;
+}
+.header {
+  position: fixed;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 0;
+  width: 220px
+  padding: 0;
+  top: 20px;
+  left: 0;
+  right: 0;
+}
+
+#top, #bottom, #left, #right {
+  background: #e1f3f9;
+  position: fixed;
+  }
+  #left, #right {
+    top: 0; bottom: 0;
+    width: 18px;
+    }
+    #left { left: 0; }
+    #right { right: 0; }
+    
+  #top {
+    left: 0; right: 0;
+    height: 18px;
+    }
+
+    #bottom {
+    left: 0; right: 0;
+    height: 18px;
+    }
+    #top { top: 0; }
+    #bottom { bottom: 0; }
+}
+
+.btnplay {
+  z-index: 10;
+  width: 150px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 10px;
+  text-align: center;
+  background: none;
+  cursor: pointer;
+  padding: auto;
+  margin: auto;
+  border: 1px solid #fff;
+  color: #fff;
+  font-family: Nunito-Light;  
+  letter-spacing: 8px;
+  outline: none;
+    position: absolute;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 0;
+  padding: 0;
+  top: 135px;
+  left: 0;
+  right: 0;
+}
+
+}

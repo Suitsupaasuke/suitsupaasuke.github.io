@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link SRC="fonts/TypeMates - CeraPRO-Light.otf" rel="stylesheet" type="text/css">
+  <link SRC="fonts/TypeMates - CeraPRO-Light.otf" rel="stylesheet" type="text/css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Self jõulud 2017</title>
+    <link href="./style2017.css" rel="stylesheet" type="text/css">
+    <link rel='shortcut icon' type='image/x-icon' href='images/favicon.ico' />
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+window.addEventListener("load", function(){
+  var load_screen = document.getElementById("load_screen");
+  document.body.removeChild(load_screen);
+});
+</script>
+</head>
+<body>
+  <div class="se-pre-con"></div>
+  <div id="myBtn" class="btnplay" onclick="myFunction()">MÄNGI</div> 
+  
+  <div id="music" onclick="toggleMusic()">
+  
+    <a id="toggle_play" href="#">
+      <img id="play-img" src="images/mute_off.svg"></img>
+    </a>
+  
+    <audio class="player_audio" loop>
+      <source src="audio/music.ogg" type="audio/ogg">
+      <source src="audio/music.mp3" type="audio/mpeg">
+    </audio>
+  
+  </div>
+  <div id="load_screen">
+    <div id="loading">LAEN SISU</div>
+  </div>
+
+  <div class="frame">
+    <div class="change_color" id="right"></div>
+    <div class="change_color" id="top"></div>
+    <div class="change_color" id="bottom"></div>
+    <div class="change_color" id="left"></div>
+  </div>
+
+
+
+  <canvas id="snow" class="snow"></canvas>
+
+
+  <div class="header">
+      <h1>HEAD KULGEMIST...</h1>
+      <h2 hidden>INNUKALT JA LÄBIPÕLEMATA!</h2>
+
+    </div>
+
+
+
+  <div class="logo">
+    <img src="images/self-logo-varviline-01.svg" alt="Self logo">
+  </div>
+
+
+<div id="video-bg">
+
+   <video id="myVideo" muted loop>
+    <!-- Default video source: -->
+    <source type="video/webm" src="video/loop.webm"
+            media="screen and (min-width: 769px)">
+    <source type="video/mp4" src="video/loop.mp4"
+            media="screen and (min-width: 769px)">
+
+    <source type="video/webm" src="video/loopmobile.webm"
+            media="screen and (max-width: 768px)">
+    <source type="video/mp4" src="video/loopmobile.mp4"
+            media="screen and (max-width: 768px)">            
+  </video>
+
+</div>
+
+
+<script>
+$(function() {
+  $("h2").delay(4000).fadeIn(4000);
+});
+</script>
+<script>
+// Get the video
+var video = document.getElementById("myVideo");
+
+// Get the button
+var btn = document.getElementById("myBtn");
+
+// Get the body width
+var bodyWidth = $('body').width(); 
+
+var player = $('.player_audio')[0];
+var image = $('#play-img')[0];
+
+video.load();
+audio.load();
+
+// Pause and play the video, and change the button text
+function myFunction() {
+  if (video.paused) {
+        video.play();
+        btn.innerHTML = "PAUS";
+        player.play();
+        image.src = 'images/mute_on.svg';
+    } else {
+        video.pause();
+        btn.innerHTML = "MÄNGI";
+        player.pause();
+        image.src = 'images/mute_off.svg';
+    }
+}
+</script>
+
+<!-- snow -->
+<script>
+  var canvas = document.getElementById('snow'),
+    ctx = canvas.getContext('2d'),
+    width = ctx.canvas.width = canvas.offsetWidth,
+    height = ctx.canvas.height = canvas.offsetHeight,
+    animFrame = window.requestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.msRequestAnimationFrame,
+    snowflakes = [];
+
+window.onresize = function() {
+  width = ctx.canvas.width = canvas.offsetWidth;
+  height = ctx.canvas.height = canvas.offsetHeight;
+
+  for (var i = 0; i < snowflakes.length; i++) {
+    snowflakes[i].resized();
+  }
+}
+
+function update() {
+  for (var i = 0; i < snowflakes.length; i++) {
+    snowflakes[i].update();
+  }
+}
+
+function Snow() {
+  this.x = random(0, width);
+  this.y = random(-height, 0);
+  this.radius = random(0.5, 3.0);
+  this.speed = random(1, 3);
+  this.wind = random(-0.5, 3.0);
+  this.isResized = false;
+  
+  this.updateData = function () {
+    this.x = random(0, width);
+    this.y = random(-height, 0);
+  }
+  
+  this.resized = function () {
+    this.isResized = true;
+  }
+}
+
+Snow.prototype.draw = function() {
+  ctx.beginPath();
+  ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+  ctx.fillStyle = '#fff';
+  ctx.fill();
+  ctx.closePath();
+}
+
+Snow.prototype.update = function() {
+  this.y += this.speed;
+  this.x += this.wind;
+
+  if (this.y > ctx.canvas.height) {
+    if (this.isResized) {
+      this.updateData();
+      this.isResized = false;
+    } else {
+      this.y = 0;
+      this.x = random(0, width); 
+    }
+  }
+}
+
+function createSnow(count) {
+  for (var i = 0; i < count; i++) {
+    snowflakes[i] = new Snow();
+  }
+}
+
+function draw() {
+  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+  for (var i = 0; i < snowflakes.length; i++) {
+    snowflakes[i].draw();
+  }
+}
+
+function loop() {
+  draw();
+  update();
+  animFrame(loop);
+}
+
+function random(min, max) {
+  var rand = (min + Math.random() * (max - min)).toFixed(1);
+  rand = Math.round(rand);
+  return rand;
+}
+
+createSnow(150);
+loop();
+</script>>
+
+
+</body>
+</html>
